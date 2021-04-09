@@ -1,10 +1,4 @@
-'''
-import mongoengine as db
-
-database_name = "ollivanders"
-DB_URL = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.4uubd.mongodb.net/?retryWrites=true&w=majority"
-db.connect(DB_URL)
-'''
+from mongoengine import *
 
 items = [
     {"code" : "4mRXZNNF", "name" : "Monitor", "price" : 49.99},
@@ -13,3 +7,8 @@ items = [
     {"code" : "rCq7LcLD", "name" : "Altavoces", "price" : 84.99},
     {"code" : "x6pb9VYO", "name" : "Micro", "price" : 34.95}
 ]
+
+class Guilded_Rose(Document):
+    name = StringField()
+    price = FloatField()
+    code = StringField(required=True)

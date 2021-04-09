@@ -1,7 +1,8 @@
 from repository.items import items
-from flask import request, jsonify
+from flask import request, jsonify, g
+from services.db_engine import get_db
 
-class baseDatos:
+class data_base:
 
     @staticmethod
     def ping():
@@ -9,22 +10,20 @@ class baseDatos:
     
     @staticmethod
     def getItems():
+        
         return jsonify({"items" : items})
     
     @staticmethod
-    def getItem(name):
-        def itemNameVeri(item, name):
-            if item["name"] == name:
-                return True
-            elif item["name"].lower() == name.lower():
-                return True
-            else:
-                return False
-        prods = [prod for prod in items if itemNameVeri(prod, name) == True]
-        if len(prods) > 0:
-            return jsonify({"items" : prods})
+    def get_item(name):
+        database = get_db()
+        items = []
+        print(g)
+        for item in g.guilded_rose.objects(name=name):
+            items.append(item)
+        if len(items) < 1:
+            return {"items":"N/A"}
         else:
-            return jsonify({"items" : "No hay datos"})
+            return items 
     
     @staticmethod
     def addItem():
