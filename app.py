@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from repository.items import items
 from services.db import baseDatos as db
 
@@ -6,7 +6,9 @@ app = Flask(__name__)
 
 @app.route('/wellcome')
 def ping():
+    # devuelve el archivo especificado
     return db.ping()
+    # return render_template('index.html')
 
 @app.route('/items', methods=['GET'])
 def getItems():
