@@ -11,6 +11,7 @@ def get_db():
             db="ollivanders",
             host="mongodb+srv://m001-student:m001-mongodb-basics@sandbox.4uubd.mongodb.net/ollivanders?retryWrites=true&w=majority",
         )
+        g.Guilded_Rose = Guilded_Rose
     return g.db
 
 def teardown_db(e=None):
@@ -28,7 +29,7 @@ def init_db():
         {"code" : "x6pb9VYO", "name" : "Micro", "price" : 34.95}
     ]
     for item in items:
-        Guilded_Rose(
+        db.Guilded_Rose(
             name=item["name"], price=item["price"], code=item["code"]
         ).save()
 

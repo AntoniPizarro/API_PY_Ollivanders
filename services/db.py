@@ -17,13 +17,17 @@ class data_base:
     def get_item(name):
         database = get_db()
         items = []
-        print(g)
-        for item in g.guilded_rose.objects(name=name):
+        items_db = []
+        for item in g.Guilded_Rose.objects():
+            items_db.append(item)
+        print(items_db)
+        for item in items_db:
+            print(type(item))
             items.append(item)
         if len(items) < 1:
-            return {"items":"N/A"}
+            return {"items" : "N/A"}
         else:
-            return items 
+            return {"items" : items} 
     
     @staticmethod
     def addItem():
