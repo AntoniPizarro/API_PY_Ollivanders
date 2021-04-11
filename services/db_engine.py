@@ -22,16 +22,16 @@ def close_db(e=None):
 def init_db():
     db = get_bd()
     items = [
-        {"code" : "cda7lZO8", "name" : "Teclado", "price" : 27.95},
-        {"code" : "Q06UMEHV", "name" : "Raton", "price" : 15.20},
-        {"code" : "4mRXZNNF", "name" : "Monitor", "price" : 49.99},
-        {"code" : "rCq7LcLD", "name" : "Altavoces", "price" : 84.99},
-        {"code" : "x6pb9VYO", "name" : "Micro", "price" : 34.95}
+        {"quality" : 5, "name" : "Teclado", "sell_in" : 27},
+        {"quality" : 8, "name" : "Raton", "sell_in" : 15},
+        {"quality" : 43, "name" : "Monitor", "sell_in" : 49},
+        {"quality" : 50, "name" : "Altavoces", "sell_in" : 84},
+        {"quality" : 21, "name" : "Micro", "sell_in" : 34}
     ]
     for item in items:
         print(item)
         Guilded_rose(
-            name=item["name"], price=item["price"], code=item["code"]
+            name=item["name"], sell_in=item["sell_in"], quality=item["quality"]
         ).save()
 
 @click.command("init-db")
