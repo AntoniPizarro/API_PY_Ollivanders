@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from services.db import data_base as db
 from services.db_engine import init_app
+import json
 
 app = Flask(__name__)
 init_app(app)
@@ -17,16 +18,20 @@ def wellcome():
     return db.ping()
 
 @app.route('/items', methods=['GET'])
-def getItems():
+def get_items():
     return db.get_items()
 
 @app.route('/items/<string:name>', methods=['GET'])
-def getItem(name):
+def get_item(name):
     return db.get_item(name)
 
-@app.route('/items', methods=['POST'])
-def addItem():
-    return db.add_item("pescado", 12.43, "jhutpn85")
+@app.route('/items/add/<string:item>', methods=['POST'])
+def add_item(item):
+    return db.add_item(json.loads(item))
+
+@app.route('/items/delete/<string:item>', methods=['POST'])
+def delete_item(item):
+    return db.delete_item(json.loads(item))
 
 
 

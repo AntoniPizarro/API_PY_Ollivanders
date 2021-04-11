@@ -1,6 +1,7 @@
-from flask import request, jsonify, g
+from flask import jsonify, g
 from services.db_engine import get_bd
 from repository.items import Guilded_rose
+from mongoengine.queryset.visitor import Q
 
 class data_base:
 
@@ -35,9 +36,21 @@ class data_base:
             return jsonify({"items" : "N/A"})
     
     @staticmethod
-    def add_item(name, price, code):
+    def add_item(args):
         db = get_bd()
-        item = {"name" : name, "price" : price, "code" : code}
+        item = {"name" : args["name"], "sell_in" : args["sell_in"], "quality" : args["quality"]}
         Guilded_rose(
-            name=item["name"], price=item["price"], code=item["code"]
+            name=item["name"], sell_in=item["sell_in"], quality=item["quality"]
         ).save()
+    
+    @staticmethod
+    def delete_item(item):
+        db = get_bd()
+        item = g.Guilded_rose.objects(Q(name=item['name'])
+                              & Q(quality=item['quality'])
+                              & Q(sell_in=item['sell_in'])).first()
+        if not item:
+            return "The specified item does not exist"
+        else:
+            item.delete()
+            return "Item deleted: " + str(item)
