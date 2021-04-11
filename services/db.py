@@ -1,6 +1,6 @@
-from repository.items import items
 from flask import request, jsonify, g
-from services.db_engine import get_db
+from services.db_engine import get_bd
+from repository.items import Guilded_rose
 
 class data_base:
 
@@ -9,27 +9,35 @@ class data_base:
         return jsonify({"Wellcome" : " Ollivanders!"})
     
     @staticmethod
-    def getItems():
-        
-        return jsonify({"items" : items})
+    def get_items():
+        db = get_bd()
+        items_list = []
+        for object in g.Guilded_rose.objects():
+            items_list.append(object.to_json())
+        if len(items_list) > 0:
+            return jsonify({"items" : items_list})
+        else:
+            return jsonify({"items" : "N/A"})
     
     @staticmethod
     def get_item(name):
-        database = get_db()
-        items = []
-        items_db = []
-        for item in g.Guilded_Rose.objects():
-            items_db.append(item)
-        print(items_db)
-        for item in items_db:
-            print(type(item))
-            items.append(item)
-        if len(items) < 1:
-            return {"items" : "N/A"}
+        db = get_bd()
+        items_list = []
+        items_list_name = []
+        for object in g.Guilded_rose.objects():
+            items_list.append(object.to_json())
+        for item in items_list:
+            if item["name"].lower() == name.lower():
+                items_list_name.append(item)
+        if len(items_list_name) > 0:
+            return jsonify({"items" : items_list_name})
         else:
-            return {"items" : items} 
+            return jsonify({"items" : "N/A"})
     
     @staticmethod
-    def addItem():
-        items.append(request.json)
-        return jsonify({"items" : items})
+    def add_item(name, price, code):
+        db = get_bd()
+        item = {"name" : name, "price" : price, "code" : code}
+        Guilded_rose(
+            name=item["name"], price=item["price"], code=item["code"]
+        ).save()

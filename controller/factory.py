@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from repository.items import items
 from services.db import baseDatos as db
+from services.db_engine import init_app
 
 def crate_app():
     app = Flask(__name__)
@@ -13,7 +14,6 @@ def crate_app():
 
     @app.route('/wellcome')
     def wellcome():
-        # devuelve el archivo especificado
         return db.ping()
 
     @app.route('/items', methods=['GET'])
@@ -28,5 +28,6 @@ def crate_app():
     def addItem():
         return db.addItem()
 
+    init_app(app)
 
     return app

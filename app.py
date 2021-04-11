@@ -18,7 +18,7 @@ def wellcome():
 
 @app.route('/items', methods=['GET'])
 def getItems():
-    return db.getItems()
+    return db.get_items()
 
 @app.route('/items/<string:name>', methods=['GET'])
 def getItem(name):
@@ -26,7 +26,7 @@ def getItem(name):
 
 @app.route('/items', methods=['POST'])
 def addItem():
-    return db.addItem()
+    return db.add_item("pescado", 12.43, "jhutpn85")
 
 
 
