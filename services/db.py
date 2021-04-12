@@ -43,6 +43,7 @@ class data_base:
         Guilded_rose(
             name=item["name"], sell_in=item["sell_in"], quality=item["quality"]
         ).save()
+        print("item added")
     
     @staticmethod
     def delete_item(item):
