@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-from repository.items import items
 from services.db import baseDatos as db
 from services.db_engine import init_app
 

@@ -1,6 +1,6 @@
 from flask import jsonify, g
 from services.db_engine import get_bd
-from repository.items import Guilded_rose
+from repository.models import Guilded_rose
 from mongoengine.queryset.visitor import Q
 
 class data_base:

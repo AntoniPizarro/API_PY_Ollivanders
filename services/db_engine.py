@@ -3,7 +3,7 @@ from mongoengine import *
 from flask.cli import with_appcontext
 from flask import g
 
-from repository.items import Guilded_rose
+from repository.models import Guilded_rose
 
 def get_bd():
     if 'db' not in g:
@@ -22,11 +22,15 @@ def close_db(e=None):
 def init_db():
     db = get_bd()
     items = [
-        {"quality" : 5, "name" : "Teclado", "sell_in" : 27},
-        {"quality" : 8, "name" : "Raton", "sell_in" : 15},
-        {"quality" : 43, "name" : "Monitor", "sell_in" : 49},
-        {"quality" : 50, "name" : "Altavoces", "sell_in" : 84},
-        {"quality" : 21, "name" : "Micro", "sell_in" : 34}
+        {"name" : "ConjuredItem", "sell_in" : 10, "quality" : 20},
+        {"name" : "AgedBrie", "sell_in" : 2, "quality" : 0},
+        {"name" : "NormalItem", "sell_in" : 5, "quality" : 7},
+        {"name" : "Sulfuras", "sell_in" : 0, "quality" : 80},
+        {"name" : "Sulfuras", "sell_in" : -1, "quality" : 80},
+        {"name" : "Backstage", "sell_in" : 15, "quality" : 20},
+        {"name" : "Backstage", "sell_in" : 10, "quality" : 49},
+        {"name" : "Backstage", "sell_in" : 5, "quality" : 49},
+        {"name" : "ConjuredItem", "sell_in" : 3, "quality" : 6}
     ]
     for item in items:
         print(item)
