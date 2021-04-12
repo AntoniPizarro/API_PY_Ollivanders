@@ -6,6 +6,10 @@ import json
 app = Flask(__name__)
 init_app(app)
 
+'''
+Hay que aislar todo lo que sea front con la API
+'''
+
 # GET
 
 @app.route('/')

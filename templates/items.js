@@ -7,7 +7,7 @@ function addItem() {
     // let action = 'http://81.32.78.19:5500/items/add/{"name":"' + name + '","sell_in":' + sellIn + ',"quality":' + quality + '}'
     
     // ip local
-    let action = 'http://127.0.0.1:5500/items/add/{"name":"' + name + '","sell_in":' + sellIn + ',"quality":' + quality + '}'
+    let action = 'http://127.0.0.1:5505/items/add/{"name":"' + name + '","sell_in":' + sellIn + ',"quality":' + quality + '}'
 
     document.getElementById("add_item").action = action
 }
@@ -21,7 +21,7 @@ function delItem() {
     // let action = 'http://81.32.78.19:5500/items/delete/{"name":"' + name + '","sell_in":' + sellIn + ',"quality":' + quality + '}'
     
     // ip local
-    let action = 'http://127.0.0.1:5500/items/delete/{"name":"' + name + '","sell_in":' + sellIn + ',"quality":' + quality + '}'
+    let action = 'http://127.0.0.1:5505/items/delete/{"name":"' + name + '","sell_in":' + sellIn + ',"quality":' + quality + '}'
 
     document.getElementById("del_item").action = action
 }
