@@ -14,26 +14,15 @@ Hay que aislar todo lo que sea front con la API
 
 @app.route('/')
 def ping():
-    # devuelve el archivo especificado
-    # return db.ping()
-    return render_template('index.html')
+    return db.ping()
 
 @app.route('/wellcome')
 def wellcome():
-    # devuelve el archivo especificado
     return db.ping()
 
 @app.route('/items', methods=['GET'])
 def get_items():
     return db.get_items()
-
-@app.route('/items/add')
-def add():
-    return render_template('addItems.html')
-
-@app.route('/items/delete')
-def delete():
-    return render_template('delItems.html')
 
 @app.route('/items/<string:name>', methods=['GET'])
 def get_item(name):
@@ -45,12 +34,7 @@ def get_item_by_sell_in(sell_in):
 
 @app.route('/items/quality/<string:quality>', methods=['GET'])
 def get_item_by_quality(quality):
-    return db.get_item_by_quality(quality)
-    
-'''@app.route('/test', methods=['GET'])
-def test():
-    return update_quality()'''
-    
+    return db.get_item_by_quality(quality)    
 
 @app.route('/items/update', methods=['GET'])
 def update_item():
