@@ -15,13 +15,13 @@ def crate_app():
     def wellcome():
         return db.ping()
 
-    @app.route('/items', methods=['GET'])
-    def getItems():
-        return db.getItems()
+    @app.route('/items', methods=['GET'])  ##DNSPYTHON ERROR
+    def get_items():
+        return db.get_items()
 
     @app.route('/items/<string:name>', methods=['GET'])
-    def getItem(name):
-        return db.getItem(name)
+    def get_item(name):
+        return db.get_item(name)
 
     @app.route('/items', methods=['POST'])
     def addItem():
