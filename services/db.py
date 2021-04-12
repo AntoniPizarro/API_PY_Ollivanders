@@ -14,8 +14,8 @@ class data_base:
     def get_items():
         db = get_bd()
         items_list = []
-        for object in g.Guilded_rose.objects():
-            items_list.append(object.to_json())
+        for item in g.Guilded_rose.objects():
+            items_list.append(item.to_json())
         if len(items_list) > 0:
             return jsonify({"items" : items_list})
         else:
@@ -26,8 +26,8 @@ class data_base:
         db = get_bd()
         items_list = []
         items_list_name = []
-        for object in g.Guilded_rose.objects():
-            items_list.append(object.to_json())
+        for item in g.Guilded_rose.objects():
+            items_list.append(item.to_json())
         for item in items_list:
             if item["name"].lower() == name.lower():
                 items_list_name.append(item)
@@ -66,3 +66,25 @@ class data_base:
             item.sell_in = item_object.sell_in
             item.quality = item_object.quality
             item.save()
+    
+    @staticmethod
+    def get_item_by_sell_in(sell_in):
+        db = get_bd()
+        items_list = []
+        for item in g.Guilded_rose.objects(sell_in=sell_in):
+            items_list.append(item.to_json())
+        if len(items_list) > 0:
+            return jsonify({"items" : items_list})
+        else:
+            return jsonify({"items" : "N/A"})
+    
+    @staticmethod
+    def get_item_by_quality(quality):
+        db = get_bd()
+        items_list = []
+        for item in g.Guilded_rose.objects(quality=quality):
+            items_list.append(item.to_json())
+        if len(items_list) > 0:
+            return jsonify({"items" : items_list})
+        else:
+            return jsonify({"items" : "N/A"})

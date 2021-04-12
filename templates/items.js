@@ -3,7 +3,11 @@ function addItem() {
     let sellIn = document.getElementById("item_sell_in_add").value
     let quality = document.getElementById("item_quality_add").value
 
-    let action = 'http://81.32.78.19:5500/items/add/{"name":"' + name + '","sell_in":' + sellIn + ',"quality":' + quality + '}'
+    // ip casa publica
+    // let action = 'http://81.32.78.19:5500/items/add/{"name":"' + name + '","sell_in":' + sellIn + ',"quality":' + quality + '}'
+    
+    // ip local
+    let action = 'http://127.0.0.1:5500/items/add/{"name":"' + name + '","sell_in":' + sellIn + ',"quality":' + quality + '}'
 
     document.getElementById("add_item").action = action
 }
@@ -13,7 +17,11 @@ function delItem() {
     let sellIn = document.getElementById("item_sell_in_del").value
     let quality = document.getElementById("item_quality_del").value
 
-    let action = 'http://81.32.78.19:5500/items/delete/{"name":"' + name + '","sell_in":' + sellIn + ',"quality":' + quality + '}'
+    // ip casa publica
+    // let action = 'http://81.32.78.19:5500/items/delete/{"name":"' + name + '","sell_in":' + sellIn + ',"quality":' + quality + '}'
+    
+    // ip local
+    let action = 'http://127.0.0.1:5500/items/delete/{"name":"' + name + '","sell_in":' + sellIn + ',"quality":' + quality + '}'
 
     document.getElementById("del_item").action = action
 }

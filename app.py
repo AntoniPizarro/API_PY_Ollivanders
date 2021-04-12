@@ -34,6 +34,14 @@ def delete():
 @app.route('/items/<string:name>', methods=['GET'])
 def get_item(name):
     return db.get_item(name)
+
+@app.route('/items/sell_in/<string:sell_in>', methods=['GET'])
+def get_item_by_sell_in(sell_in):
+    return db.get_item_by_sell_in(sell_in)
+
+@app.route('/items/quality/<string:quality>', methods=['GET'])
+def get_item_by_quality(quality):
+    return db.get_item_by_quality(quality)
     
 '''@app.route('/test', methods=['GET'])
 def test():
