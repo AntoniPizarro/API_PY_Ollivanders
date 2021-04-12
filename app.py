@@ -1,10 +1,13 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from services.db import data_base as db
 from services.db_engine import init_app
+from services.update_quality import update_quality
 import json
 
 app = Flask(__name__)
 init_app(app)
+
+# GET
 
 @app.route('/')
 def ping():
@@ -24,6 +27,18 @@ def get_items():
 @app.route('/items/<string:name>', methods=['GET'])
 def get_item(name):
     return db.get_item(name)
+    
+@app.route('/test', methods=['GET'])
+def test():
+    return update_quality()
+    
+
+@app.route('/items/update', methods=['GET'])
+def update_item():
+    db.update_quality()
+    return redirect("../items", code=302)
+
+# POST
 
 @app.route('/items/add/<string:item>', methods=['POST'])
 def add_item(item):
@@ -32,7 +47,6 @@ def add_item(item):
 @app.route('/items/delete/<string:item>', methods=['POST'])
 def delete_item(item):
     return db.delete_item(json.loads(item))
-
 
 
 if __name__ == "__main__":

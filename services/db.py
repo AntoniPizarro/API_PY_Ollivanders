@@ -2,6 +2,7 @@ from flask import jsonify, g
 from services.db_engine import get_bd
 from repository.models import Guilded_rose
 from mongoengine.queryset.visitor import Q
+from controller.create_item_object import create_item_object
 
 class data_base:
 
@@ -54,3 +55,13 @@ class data_base:
         else:
             item.delete()
             return "Item deleted: " + str(item)
+    
+    @staticmethod
+    def update_quality():
+        db = get_bd()
+        for item in g.Guilded_rose.objects():
+            item_object = create_item_object(item.to_json())
+            item_object.update_quality()
+            item.sell_in = item_object.sell_in
+            item.quality = item_object.quality
+            item.save()

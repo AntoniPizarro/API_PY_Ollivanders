@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from services.db import baseDatos as db
+from services.db import data_base as db
 from services.db_engine import init_app
 
 def crate_app():
