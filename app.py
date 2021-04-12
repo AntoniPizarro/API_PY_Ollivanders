@@ -1,4 +1,4 @@
-from flask import Flask, redirect
+from flask import Flask, render_template, redirect
 from services.db import data_base as db
 from services.db_engine import init_app
 import json
@@ -6,6 +6,9 @@ import json
 app = Flask(__name__)
 init_app(app)
 
+'''
+Hay que aislar todo lo que sea front con la API
+'''
 
 # GET
 
@@ -37,7 +40,6 @@ def get_item_by_quality(quality):
 def update_item():
     db.update_quality()
     return redirect("../items", code=302)
-
 
 # POST
 
