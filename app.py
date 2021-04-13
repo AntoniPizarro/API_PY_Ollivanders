@@ -45,7 +45,7 @@ def get_item_by_quality(quality):
 @app.route("/items/update", methods=["GET"])
 def update_item():
     db.update_quality()
-    return redirect("../items", code=302)
+    return {"items" : "all updated"}
 
 
 # POST
