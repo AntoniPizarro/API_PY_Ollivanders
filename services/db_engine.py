@@ -5,6 +5,17 @@ from flask import g
 
 from repository.models import Guilded_rose
 
+items = [
+    {"name": "ConjuredItem", "sell_in": 10, "quality": 20},
+    {"name": "AgedBrie", "sell_in": 2, "quality": 0},
+    {"name": "NormalItem", "sell_in": 5, "quality": 7},
+    {"name": "Sulfuras", "sell_in": 0, "quality": 80},
+    {"name": "Sulfuras", "sell_in": -1, "quality": 80},
+    {"name": "Backstage", "sell_in": 15, "quality": 20},
+    {"name": "Backstage", "sell_in": 10, "quality": 49},
+    {"name": "Backstage", "sell_in": 5, "quality": 49},
+    {"name": "ConjuredItem", "sell_in": 3, "quality": 6},
+]
 
 def get_bd():
     if "db" not in g:
@@ -24,17 +35,6 @@ def close_db(e=None):
 
 def init_db():
     db = get_bd()
-    items = [
-        {"name": "ConjuredItem", "sell_in": 10, "quality": 20},
-        {"name": "AgedBrie", "sell_in": 2, "quality": 0},
-        {"name": "NormalItem", "sell_in": 5, "quality": 7},
-        {"name": "Sulfuras", "sell_in": 0, "quality": 80},
-        {"name": "Sulfuras", "sell_in": -1, "quality": 80},
-        {"name": "Backstage", "sell_in": 15, "quality": 20},
-        {"name": "Backstage", "sell_in": 10, "quality": 49},
-        {"name": "Backstage", "sell_in": 5, "quality": 49},
-        {"name": "ConjuredItem", "sell_in": 3, "quality": 6},
-    ]
     for item in items:
         print(item)
         Guilded_rose(
