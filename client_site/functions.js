@@ -120,9 +120,13 @@ function getItemByQuality(quality) {
 }
 
 function updateQuality() {
+    document.getElementById("inventory").innerHTML = "";
     fetch(ip + '/items/update')
         .then(response => response.json())
-        .then(data => console.log(data));
+        .then(data => {
+            console.log(data);
+            checkGet();
+        });
 }
 
 function addItem(item) {
