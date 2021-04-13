@@ -1,9 +1,11 @@
 from flask import Flask, redirect
 from services.db import data_base as db
 from services.db_engine import init_app
+from flask_cors import CORS
 import json
 
 app = Flask(__name__)
+CORS(app)
 init_app(app)
 
 
@@ -62,4 +64,4 @@ def delete_item(item):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True, port=5500)
+    app.run(host="0.0.0.0", debug=True, port=5505)
