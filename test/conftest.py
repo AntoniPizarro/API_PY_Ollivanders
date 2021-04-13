@@ -1,8 +1,8 @@
 import pytest
-from controller.factory import crate_app
+from controller.factory import create_app
 
 
 @pytest.fixture
 def client():
-    app = crate_app()
+    app = create_app()
     return app.test_client()

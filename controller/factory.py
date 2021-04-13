@@ -4,7 +4,7 @@ from services.db_engine import init_app
 import json
 
 
-def crate_app():
+def create_app():
     app = Flask(__name__)
     init_app(app)
 
