@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
     <title>Guilded Rose: gestión</title>
 </head>
 <body>
@@ -16,11 +17,18 @@
     <nav class="menu">
         <div class="menu-option"><a href="./index.html">Inicio</a></div>
         <div class="menu-option"><a href="./inventory.html">Inventario</a></div>
-        <div class="menu-option"><a href="">Añadir/Eliminar</a></div>
+        <div class="menu-option"><a href="add-delete.html">Añadir/Eliminar</a></div>
     </nav>
-    <form action="" id="add-delete" method="POST">
-        
-    </form>
+    <div id="add-delete">
+        <input type="radio" name="add-del" id="add-item" checked>
+        <label for="add-item">Añadir Item</label>
+        <input type="radio" name="add-del" id="del-item">
+        <label for="del-item">Eliminar Item</label>
+        <input type="text" name="item-name" id="item-name" placeholder="Name">
+        <input type="text" name="item-sell_in" id="item-sell_in" placeholder="Sell in">
+        <input type="text" name="item-quality" id="item-quality" placeholder="Quality">
+        <input type="button" onclick="checkPost()" value="Enviar">
+    </div>
     <footer>
         <p>© Ollivanders guilded Rose 2021</p>
     </footer>

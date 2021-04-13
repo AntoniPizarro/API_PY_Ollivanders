@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/inventory.css">
     <title>Guilded Rose: inventario</title>
 </head>
-<body>
+<body onload="getItems()">
     <header>
         <div class="banner">
             <img src="./images/logo-guilded-rose.png" alt="Guilded Rose logo" id="logo" height="300px">
@@ -17,12 +17,21 @@
     <nav class="menu">
         <div class="menu-option"><a href="./index.html">Inicio</a></div>
         <div class="menu-option"><a href="./inventory.html">Inventario</a></div>
-        <div class="menu-option"><a href="">Añadir/Eliminar</a></div>
+        <div class="menu-option"><a href="add-delete.html">Añadir/Eliminar</a></div>
     </nav>
-    
-    <div id="inventory">
+    <div id="inventory-div">
         <h3>Inventario</h3>
-        <button onclick="getItems()">Actualizar</button>
+        <select name="filter" id="filter">
+            <option>Name</option>
+            <option>Sell in</option>
+            <option>Quality</option>
+        </select>
+        <input type="text" name="filter-value" id="filter-value">
+        <button onclick="checkGet()">Actualizar filtro</button>
+        <button onclick="updateQuality()">Actualizar items</button>
+        <div id="inventory">
+
+        </div>
     </div>
     <footer>
         <p>© Ollivanders guilded Rose 2021</p>
