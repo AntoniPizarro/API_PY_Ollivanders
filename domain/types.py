@@ -82,7 +82,11 @@ class Sulfuras(NormalItem):
     def __init__(self, name, sell_in, quality):
         Item.__init__(self, name, sell_in, quality)
 
+    def setSell_in(self):
+        self.sell_in = 0
+
     def update_quality(self):
+        self.setSell_in()
         assert self.quality == 80, (
             "quality de %s distinta de 80" % self.__class__.__name__
         )
