@@ -2,13 +2,18 @@ from services.db import data_base
 from repository.models import Guilded_rose
 from app import *  # OUT OF CONTEXT
 import pytest
+from controller.factory import create_app
+
 
 
 @pytest.mark.db
 def test_delete_item():  # METHOD TEST
-    with app.app_context():
-        item = {"name": "ItemFake", "sell_in": 12, "quality": 12}
-        assert data_base.delete_item(item, DB, HOST) == ("The specified item does not exist")
+    db = "ollivanders-test"
+    host = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.4uubd.mongodb.net/ollivanders-test?retryWrites=true&w=majority"
+    app = create_app(db, host)
+    
+    item = {"name": "ItemFake", "sell_in": 12, "quality": 12}
+    assert data_base.delete_item(item, DB, HOST) == ("The specified item does not exist")
 
 
 @pytest.mark.db
