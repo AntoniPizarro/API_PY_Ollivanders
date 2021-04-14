@@ -17,6 +17,7 @@
 var ip = "http://81.32.78.19:5505";
 
 function getItems() {
+    document.getElementById("inventory").innerHTML = "";
     fetch(ip + '/items')
         .then(response => response.json())
         .then(data => {
@@ -120,7 +121,6 @@ function getItemByQuality(quality) {
 }
 
 function updateQuality() {
-    document.getElementById("inventory").innerHTML = "";
     fetch(ip + '/items/update')
         .then(response => response.json())
         .then(data => {
@@ -135,7 +135,13 @@ function addItem(item) {
         mode: 'no-cors'
     })
     .then(data => {
-        console.log(item + " has been added")
+        document.getElementById("add-del").disabled = true;
+        console.log(item + " has been added");
+        alert(item + " has been added")
+        document.getElementById("add-del").disabled = false;
+        document.getElementById("item-name").value = "";
+        document.getElementById("item-sell_in").value = "";
+        document.getElementById("item-quality").value = "";
     });
 }
 
@@ -144,7 +150,13 @@ function deleteItem(item) {
         method: 'POST'
     })
     .then(data => {
-        console.log(item + " has been deleted")
+        document.getElementById("add-del").disabled = true;
+        console.log(item + " has been deleted");
+        alert(item + " has been deleted")
+        document.getElementById("add-del").disabled = false;
+        document.getElementById("item-name").value = "";
+        document.getElementById("item-sell_in").value = "";
+        document.getElementById("item-quality").value = "";
     });
 }
 
@@ -161,7 +173,6 @@ function checkPost() {
 }
 
 function checkGet() {
-    document.getElementById("inventory").innerHTML = "";
     let filterValue = document.getElementById("filter-value").value;
     var filter = document.getElementById("filter");
     var option = filter.options[filter.selectedIndex].text;

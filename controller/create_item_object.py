@@ -2,18 +2,12 @@ from domain.types import *
 
 
 def create_item_object(item):
+    types = ["NormalItem", "AgedBrie", "ConjuredItem", "Sulfuras", "Backstage"]
+    item_class = ""
     try:
-        item_class = item["name"]
-    except KeyError:
+        item_class = types[types.index(item["name"])]
+    except ValueError:
         item_class = "NormalItem"
     finally:
-        return eval(
-            item_class
-            + "("
-            + item["name"]
-            + ", "
-            + str(item["sell_in"])
-            + ", "
-            + str(item["quality"])
-            + ")"
-        )
+        print(item_class + "(\"" + item["name"] + "\", " + str(item["sell_in"]) + ", " + str(item["quality"]) + ")")
+        return eval(item_class + "(\"" + item["name"] + "\", " + str(item["sell_in"]) + ", " + str(item["quality"]) + ")")

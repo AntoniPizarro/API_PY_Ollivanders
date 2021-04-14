@@ -1,18 +1,34 @@
-body{
+    body{
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: white;
     }
+
+
     
     header h1{
         font-size: 2rem;
         background-color: #480ca8;
         padding: 2rem 250px;
         margin: 2rem auto;
-        border: solid 0.2rem black;
+        
         color:white;
-    
     }
+
+
+    header img{
+        height: 10%;
+        width: 10%;
+    }
+
+    #inventory-div h2{
+        margin-bottom: 8rem;
+        font-size: 2rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-decoration: underline;
+        color: aliceblue;
+    }
+    
     
     a{
         color: black;
@@ -32,6 +48,10 @@ body{
     a:visited {
         text-decoration: none;
     }
+
+    nav.menu{
+        margin: 3rem;
+    }
     
 
     nav .menu-option{
@@ -42,30 +62,101 @@ body{
         border: solid 0.1rem;
         color: white;
     }
+
+
+    /*Index*/
+
+
+    div.info{
+        padding: 2rem;
+        background-color: #3f37c9;
+        border-end-end-radius: 15%;
+        border-top-left-radius: 15%;
+
+    }
+
+    div.info img{
+        width: 50%;
+    }
+
+
+
+
+    /*Inventory*/
     
-    #inventory{
+    #inventory-div{
         margin: 5rem auto;
         padding:6rem;
         background-color: #4361ee;
         font-size: 1rem;
-        border:solid 0.3rem
+        border:solid 0.3rem;
     }
-
+    
+    
     button{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
     background-color: #3f37c9;
     padding: 0.5rem;
     border-radius: 2rem;
+    }
+
+    #inventory{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(80px, auto);
+        grid-gap: 15px;
+    }
+
+
+    .item-block{
+        background-color: #241f7c;
+        color: white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border: solid black;
+        margin: 1.2rem;
+        padding: 0.001rem;
+        display: grid;
+        
 }
 
-    
-    
+    /*ADD-DEL ITEM*/
+
+    #add-delete{
+        margin: 2rem;
+        background-color: #6760dd;
+        padding: 2rem;
+        font-size: 1rem;
+
+    }
+
+    input{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    background-color: #3f37c9;
+    padding: 0.5rem;
+    border-radius: 2rem;
+
+    }
+
+    select{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: white;
+        background-color: #3f37c9;
+        padding: 0.5rem;
+        border-radius: 2rem;
+    }
+
     
     footer{
-        position: absolute;
+        color: black;
+        position: static;
         bottom: 0;
-    }
+        text-align: center;
+        height: 5%;
+        padding: auto;
+        margin: auto;
+}
     
     
     
