@@ -11,8 +11,8 @@ class data_base:
         return jsonify({"Wellcome": " Ollivanders!"})
 
     @staticmethod
-    def get_items():
-        db = get_bd()
+    def get_items(db, url):
+        db = get_bd(db, url)
         items_list = []
         for item in g.Guilded_rose.objects():
             items_list.append(item.to_json())
@@ -22,8 +22,8 @@ class data_base:
             return jsonify({"items": "N/A"})
 
     @staticmethod
-    def get_item(name):
-        db = get_bd()
+    def get_item(name, db, url):
+        db = get_bd(db, url)
         items_list = []
         items_list_name = []
         for item in g.Guilded_rose.objects():
@@ -37,8 +37,8 @@ class data_base:
             return jsonify({"items": "N/A"})
 
     @staticmethod
-    def add_item(args):
-        db = get_bd()
+    def add_item(args, db, url):
+        db = get_bd(db, url)
         item = {
             "name": args["name"],
             "sell_in": args["sell_in"],
@@ -50,8 +50,8 @@ class data_base:
         print("item added")
 
     @staticmethod
-    def delete_item(item):
-        db = get_bd()
+    def delete_item(item, db, url):
+        db = get_bd(db, url)
         item = g.Guilded_rose.objects(
             Q(name=item["name"])
             & Q(quality=item["quality"])
@@ -64,8 +64,8 @@ class data_base:
             return "Item deleted: " + str(item)
 
     @staticmethod
-    def update_quality():
-        db = get_bd()
+    def update_quality(db, url):
+        db = get_bd(db, url)
         for item in g.Guilded_rose.objects():
             item_object = create_item_object(item.to_json())
             item_object.update_quality()
@@ -74,8 +74,8 @@ class data_base:
             item.save()
 
     @staticmethod
-    def get_item_by_sell_in(sell_in):
-        db = get_bd()
+    def get_item_by_sell_in(sell_in, db, url):
+        db = get_bd(db, url)
         items_list = []
         for item in g.Guilded_rose.objects(sell_in=sell_in):
             items_list.append(item.to_json())
@@ -85,8 +85,8 @@ class data_base:
             return jsonify({"items": "N/A"})
 
     @staticmethod
-    def get_item_by_quality(quality):
-        db = get_bd()
+    def get_item_by_quality(quality, db, url):
+        db = get_bd(db, url)
         items_list = []
         for item in g.Guilded_rose.objects(quality=quality):
             items_list.append(item.to_json())

@@ -8,7 +8,7 @@ import pytest
 def test_delete_item():  # METHOD TEST
     with app.app_context():
         item = {"name": "ItemFake", "sell_in": 12, "quality": 12}
-        assert data_base.delete_item(item) == ("The specified item does not exist")
+        assert data_base.delete_item(item, DB, HOST) == ("The specified item does not exist")
 
 
 @pytest.mark.db

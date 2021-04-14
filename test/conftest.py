@@ -9,7 +9,9 @@ from services.db_engine import items
 
 @pytest.fixture(autouse=True)
 def client():
-    app = create_app()
+    db = "ollivanders-test"
+    host = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.4uubd.mongodb.net/ollivanders-test?retryWrites=true&w=majority"
+    app = create_app(db, host)
     app.app_context().push()
     SetupTestDB.init_mock_db()
     return app.test_client()
@@ -20,10 +22,14 @@ class SetupTestDB:
     @staticmethod
     def get_db():
         '''
-        Se conecta a una base de datos
+        Se conecta a una base de datos destinada a ser testeada y la devuelve al objeto grlobal g de Flask
         '''
-        g.db = connect("dbtest", host="database://localhost")
-        g.Guilded_rose
+        if "db" not in g:
+            g.db = connect(
+                db="ollivanders-test",
+                host="mongodb+srv://m001-student:m001-mongodb-basics@sandbox.4uubd.mongodb.net/ollivanders-test?retryWrites=true&w=majority",
+            )
+            g.Guilded_rose = Guilded_rose
         return g.db
 
     @staticmethod

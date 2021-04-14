@@ -17,14 +17,14 @@ items = [
     {"name": "ConjuredItem", "sell_in": 3, "quality": 6},
 ]
 
-def get_bd():
+def get_bd(db_name, host_url):
     '''
     Se conecta a una base de datos y la devuelve al objeto grlobal g de Flask
     '''
     if "db" not in g:
         g.db = connect(
-            db="ollivanders",
-            host="mongodb+srv://m001-student:m001-mongodb-basics@sandbox.4uubd.mongodb.net/ollivanders?retryWrites=true&w=majority",
+            db=db_name,
+            host=host_url,
         )
         g.Guilded_rose = Guilded_rose
     return g.db
@@ -36,8 +36,8 @@ def close_db(e=None):
         db.close()
 
 
-def init_db():
-    db = get_bd()
+def init_db(db_name, host_url):
+    db = get_bd(db_name, host_url)
     for item in items:
         print(item)
         Guilded_rose(
@@ -48,10 +48,10 @@ def init_db():
 @click.command("init-db")
 @with_appcontext
 def init_db_command():
-    init_db()
+    init_db(db_name, host_url)
     click.echo("Data Base initialized")
 
 
-def init_app(app):
+def init_app(app, db_name, host_url):
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
