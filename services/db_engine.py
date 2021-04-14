@@ -48,6 +48,8 @@ def init_db(db_name, host_url):
 @click.command("init-db")
 @with_appcontext
 def init_db_command():
+    db_name = "ollivanders"
+    host_url = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.4uubd.mongodb.net/ollivanders?retryWrites=true&w=majority"
     init_db(db_name, host_url)
     click.echo("Data Base initialized")
 
