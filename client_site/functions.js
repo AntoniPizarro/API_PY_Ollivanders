@@ -14,7 +14,7 @@
 </div>
 */
 
-var ip = "http://81.32.78.19:5505";
+var ip = "http://127.0.0.1:5505";
 
 function getItems() {
     document.getElementById("inventory").innerHTML = "";
@@ -49,6 +49,7 @@ function getItems() {
 }
 
 function getItem(name) {
+    document.getElementById("inventory").innerHTML = "";
     let filt = name;
     fetch(ip + '/items/' + filt)
         .then(response => response.json())
@@ -73,6 +74,7 @@ function getItem(name) {
 }
 
 function getItemBySellIn(sell_in) {
+    document.getElementById("inventory").innerHTML = "";
     let filt = sell_in;
     fetch(ip + '/items/sell_in/' + filt)
         .then(response => response.json())
@@ -97,6 +99,7 @@ function getItemBySellIn(sell_in) {
 }
 
 function getItemByQuality(quality) {
+    document.getElementById("inventory").innerHTML = "";
     let filt = quality;
     fetch(ip + '/items/quality/' + filt)
         .then(response => response.json())
