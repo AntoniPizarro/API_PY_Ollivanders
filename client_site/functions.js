@@ -1,20 +1,12 @@
+let ind = 2;
 /*
-<div id="inventory">
-    <div class="item-block">
-        <p class="item-name">Name: XXX</p>
-        <p class="item-sell-in">Sell in: XXX</p>
-        <p class="item-quality">Quality: XXX</p>
-    </div>
-    <div class="item-block">
-        <p class="item-name">Name: XXX</p>
-        <p class="item-sell-in">Sell in: XXX</p>
-        <p class="item-quality">Quality: XXX</p>
-    </div>
-    ...
-</div>
+    1 = localhost
+    2 = red local (editable)
+    3 = casa (dinámica)
 */
 
-var ip = "http://127.0.0.1:5505";
+let ipList = ["http://127.0.0.1:5505", "http://192.168.1.187:5505", "http://81.32.78.19:5505"]
+var ip = ipList[ind - 1];
 
 function getItems() {
     document.getElementById("inventory").innerHTML = "";
