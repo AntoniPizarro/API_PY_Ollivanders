@@ -18,17 +18,25 @@ def test_delete_item():  # METHOD TEST
 
 @pytest.mark.db
 def test_get_item_by_sell(client):  # API ROUTE TEST
-    rv = client.get("/items/sell_in/6")
-    assert b'{"items":[{"name":"Backstage","quality":33,"sell_in":6}]}' in rv.data
+    rv = client.get("/items/sell_in/15")
+    assert b'{"items":[{"name":"Backstage","quality":20,"sell_in":15}]}' in rv.data
 
 
 @pytest.mark.db
 def test_get_item_by_quality(client):  # API ROUTE TEST
-    rv = client.get("/items/quality/33")
-    assert b'{"items":[{"name":"Backstage","quality":33,"sell_in":6}]}' in rv.data
+    rv = client.get("/items/quality/49")
+    assert b'{"items":[{"name":"Backstage","quality":49,"sell_in":10},{"name":"Backstage","quality":49,"sell_in":5}]}' in rv.data
 
 
 @pytest.mark.db
 def test_get_item_by_name(client):  # API ROUTE TEST
     rv = client.get("/items/NormalItem")
-    assert b'{"name":"NormalItem","quality":0,"sell_in":-4}' in rv.data
+    assert b'{"name":"NormalItem","quality":7,"sell_in":5}' in rv.data
+
+    
+'''
+@pytest.mark.db
+def test_update_item(client):  # API ROUTE TEST
+    rv = client.get("/items/update")
+    assert b'{"items" : "all updated"}' in rv.data
+'''
