@@ -18,6 +18,9 @@ items = [
 ]
 
 def get_bd():
+    '''
+    Se conecta a una base de datos y la devuelve al objeto grlobal g de Flask
+    '''
     if "db" not in g:
         g.db = connect(
             db="ollivanders",

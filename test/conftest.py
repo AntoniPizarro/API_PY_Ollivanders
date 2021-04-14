@@ -4,7 +4,7 @@ from mongoengine import connect
 
 from controller.factory import create_app
 from repository.models import Guilded_rose
-from repository.db_engine import items
+from services.db_engine import items
 
 
 @pytest.fixture(autouse=True)
@@ -19,12 +19,18 @@ class SetupTestDB:
 
     @staticmethod
     def get_db():
+        '''
+        Se conecta a una base de datos
+        '''
         g.db = connect("dbtest", host="database://localhost")
         g.Guilded_rose
         return g.db
 
     @staticmethod
     def init_mock_db():
+        '''
+            Crea una base de datos moqueada
+        '''
         db = SetupTestDB.get_db()
         Guilded_rose.drop_collection()
         for item in items:
